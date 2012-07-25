@@ -23,8 +23,6 @@ public class CassandraBigData {
         }
     }
 
-
-
     private enum Action {
         CREATE("-create", "create", "Create 10^7 rows"),
         DELETE("-delete", "delete", "Delete all rows"),
