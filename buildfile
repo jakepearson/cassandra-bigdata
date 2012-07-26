@@ -30,8 +30,18 @@ COMMONS = "commons-logging:commons-logging:jar:1.1.1",
 
 define 'cassandra-bigdata' do
   project.version = '0.1'
-  package :jar
   compile.with LOGGING, COMMONS, CQL, HECTOR
   run.using :main => ["com.rallydev.cassandra.CassandraBigData", "-#{ARGV[1]}"]
+
+  def add_dependencies(pkg)
+    tempfile = pkg.to_s.sub(/.jar$/, "-without-dependencies.jar")
+    mv pkg.to_s, tempfile
+
+    dependencies = compile.dependencies.map { |d| "-c #{d}"}.join(" ")
+    sh "java -jar tools/autojar.jar -baev -o #{pkg} #{dependencies} #{tempfile}"
+  end
+
+  package(:jar)
+  package(:jar).enhance { |pkg| pkg.enhance { |pkg| add_dependencies(pkg) }}
 end
 
