@@ -27,7 +27,8 @@ public class CassandraBigData {
         CREATE("-create", "create", "Create 10^7 rows"),
         DELETE("-delete", "delete", "Delete all rows"),
         READ("-read", "read", "Read all rows"),
-        RESET("-reset", "reset", "Delete the keyspace");
+        RESET("-reset", "reset", "Delete the keyspace"),
+        EXERCISE("-exercise", "exercise", "Create, Read, Delete");
 
 
         private String command;
