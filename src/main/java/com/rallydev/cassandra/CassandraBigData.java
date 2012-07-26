@@ -13,7 +13,9 @@ public class CassandraBigData {
     }
 
     private static void execute(String action) throws Exception {
-        MethodUtils.invokeMethod(new ActionRunner(), Action.byCommand(action).getMethod(), null);
+        ActionRunner runner = new ActionRunner();
+        MethodUtils.invokeMethod(runner, Action.byCommand(action).getMethod(), null);
+        runner.shutdown();
     }
 
     private static void printHelp() {

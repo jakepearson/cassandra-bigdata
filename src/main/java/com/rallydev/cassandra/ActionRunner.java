@@ -21,11 +21,12 @@ public class ActionRunner {
 
     public void create() {
         counter = 0;
-        int count = 10000000;
+        int count = 1000;
         for(int i = 1; i<=count; i++) {
             buildCreate(i, count);
         }
         LOGGER.info("Created {} rows", counter);
+        waitForComplete();
     }
 
     private void buildCreate(final int pos, final int count) {
@@ -52,6 +53,7 @@ public class ActionRunner {
             }
         });
         LOGGER.info("Deleted {} rows", counter);
+        waitForComplete();
     }
 
     private void buildDelete(final Row<String, Long, String> row, final int pos) {
@@ -88,18 +90,18 @@ public class ActionRunner {
     public void exercise() {
         long start = (new Date()).getTime();
         create();
-        waitForComplete();
         long createEnd = (new Date()).getTime();
         read();
         long readEnd = (new Date()).getTime();
         delete();
-        waitForComplete();
         long deleteEnd = (new Date()).getTime();
 
         LOGGER.info("Create took {} seconds", (createEnd - start)/1000);
         LOGGER.info("Read took {} seconds", (readEnd - createEnd)/1000);
         LOGGER.info("Delete took {} seconds", (deleteEnd - readEnd)/1000);
+    }
 
+    public void shutdown() {
         executor.shutdown();
     }
 

@@ -32,6 +32,6 @@ define 'cassandra-bigdata' do
   project.version = '0.1'
   package :jar
   compile.with LOGGING, COMMONS, CQL, HECTOR
-  run.using :main => ["com.rallydev.cassandra.CassandraBigData", "-create"]
+  run.using :main => ["com.rallydev.cassandra.CassandraBigData", "-#{ARGV[1]}"]
 end
 
