@@ -78,7 +78,7 @@ public class HectorKeyValueStore {
         return column.getValue();
     }
     
-    public Boolean put(final String key, final String value) {
+    public boolean put(final String key, final String value) {
         try {
             Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
             mutator.addInsertion(key, COLUMN_FAMILY, HFactory.createColumn((new Date()).getTime(), value, LONG_SERIALIZER, STRING_SERIALIZER));
@@ -86,6 +86,18 @@ public class HectorKeyValueStore {
             return true;
         } catch (Exception e) {
             LOGGER.error("Insertion failed", e);
+            return false;
+        }
+    }
+
+    public boolean delete(final String key) {
+        try {
+            Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
+            mutator.addDeletion(key, COLUMN_FAMILY);
+            mutator.execute();
+            return true;
+        } catch (Exception e) {
+            LOGGER.error("Delete failed", e);
             return false;
         }
     }

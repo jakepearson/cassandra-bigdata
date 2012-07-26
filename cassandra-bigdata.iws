@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05266912-d4ba-41ef-aca2-614a99ed54bb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cassandra-bigdata.ipr" afterPath="$PROJECT_DIR$/cassandra-bigdata.ipr" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/rallydev/cassandra/ActionRunner.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/rallydev/cassandra/CassandraBigData.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/rallydev/cassandra/HectorKeyValueStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/rallydev/cassandra/RowRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/RowRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cassandra-bigdata.iml" afterPath="$PROJECT_DIR$/cassandra-bigdata.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cassandra-bigdata.iws" afterPath="$PROJECT_DIR$/cassandra-bigdata.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rallydev/cassandra/ActionRunner.java" afterPath="$PROJECT_DIR$/src/com/rallydev/cassandra/ActionRunner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rallydev/cassandra/CassandraBigData.java" afterPath="$PROJECT_DIR$/src/com/rallydev/cassandra/CassandraBigData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rallydev/cassandra/HectorKeyValueStore.java" afterPath="$PROJECT_DIR$/src/com/rallydev/cassandra/HectorKeyValueStore.java" />
     </list>
     <ignored path="cassandra-bigdata.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,39 +66,49 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="CassandraBigData.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/CassandraBigData.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="749" selection-end="749" vertical-scroll-proportion="0.0">
+            <state line="4" column="29" selection-start="96" selection-end="112" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActionRunner.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/ActionRunner.java">
+      <file leaf-file-name="ActionRunner.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="52" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0">
+            <state line="25" column="46" selection-start="769" selection-end="769" vertical-scroll-proportion="0.3100233">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#697#832#0" expanded="true" />
-                <element signature="e#821#822#0" expanded="true" />
-                <element signature="e#1037#1038#0" expanded="true" />
+                <element signature="e#860#1063#0" expanded="true" />
+                <element signature="e#1052#1053#0" expanded="true" />
+                <element signature="e#1202#1376#0" expanded="true" />
+                <element signature="e#1365#1366#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HectorKeyValueStore.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/HectorKeyValueStore.java">
+      <file leaf-file-name="buildfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/buildfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="29" selection-start="4251" selection-end="4251" vertical-scroll-proportion="0.4848485">
+            <state line="15" column="81" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HectorKeyValueStore.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="80" column="12" selection-start="3684" selection-end="3684" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="RowRunnable.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/RowRunnable.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/RowRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="4" column="16" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
               <folding />
@@ -129,6 +140,8 @@
         <option value="$PROJECT_DIR$/src/com/rallydev/cassandra/RowRunnable.java" />
         <option value="$PROJECT_DIR$/src/com/rallydev/cassandra/HectorKeyValueStore.java" />
         <option value="$PROJECT_DIR$/src/com/rallydev/cassandra/ActionRunner.java" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/buildfile" />
       </list>
     </option>
   </component>
@@ -207,7 +220,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cassandra" />
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -253,7 +270,11 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
   <component name="RunManager" selected="Application.CassandraBigData">
@@ -460,36 +481,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/CassandraBigData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="749" selection-end="749" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/ActionRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="52" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#697#832#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/RowRunnable.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/RowRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="16" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rallydev/cassandra/HectorKeyValueStore.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="29" selection-start="4251" selection-end="4251" vertical-scroll-proportion="0.4848485">
+        <state line="80" column="12" selection-start="3684" selection-end="3684" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="25" selection-start="65" selection-end="65" vertical-scroll-proportion="0.055944055">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="29" selection-start="96" selection-end="112" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="81" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="46" selection-start="769" selection-end="769" vertical-scroll-proportion="0.3100233">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#860#1063#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1202#1376#0" expanded="true" />
+            <element signature="e#1365#1366#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -551,6 +587,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
