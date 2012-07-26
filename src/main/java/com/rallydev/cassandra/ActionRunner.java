@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ActionRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(ActionRunner.class);
 
-    HectorKeyValueStore store = new HectorKeyValueStore();
+    KeyValueStore store = new HectorKeyValueStore();
     private int counter;
 
     public void create() {

@@ -29,12 +29,10 @@ import static java.lang.System.getProperty;
 import static me.prettyprint.hector.api.HConsistencyLevel.QUORUM;
 import static me.prettyprint.hector.api.factory.HFactory.getOrCreateCluster;
 
-public class HectorKeyValueStore {
+public class HectorKeyValueStore implements KeyValueStore {
     private static final Logger LOGGER = LoggerFactory.getLogger(HectorKeyValueStore.class);
     private static final StringSerializer STRING_SERIALIZER = StringSerializer.get();
     private static final LongSerializer LONG_SERIALIZER = LongSerializer.get();
-    private static final String COLUMN_FAMILY = "BigDataTestFamily";
-    private static final String KEYSPACE_NAME = "BigDataTestKeyspace";
     private static final String HOSTS = "cas2cluster1:9160, cas2cluster2:9160, cas2cluster3:9160";
     private static final Cluster CLUSTER = getOrCreateCluster(getProperty("CLUSTER_NAME", "zuul-cluster"), new CassandraHostConfigurator(HOSTS));
     private final ConfigurableConsistencyLevel POLICY;
@@ -58,6 +56,7 @@ public class HectorKeyValueStore {
         }
     }
 
+    @Override
     public void deleteKeyspace() {
         try {
             CLUSTER.dropKeyspace(KEYSPACE.getKeyspaceName());
@@ -66,6 +65,7 @@ public class HectorKeyValueStore {
         }
     }
 
+    @Override
     public String get(String key) {
         final SliceQuery<String, Long, String> query = HFactory.createSliceQuery(KEYSPACE, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER);
         query.setKey(key);
@@ -78,6 +78,7 @@ public class HectorKeyValueStore {
         return column.getValue();
     }
     
+    @Override
     public boolean put(final String key, final String value) {
         try {
             Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
@@ -90,6 +91,7 @@ public class HectorKeyValueStore {
         }
     }
 
+    @Override
     public boolean delete(final String key) {
         try {
             Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
@@ -102,6 +104,7 @@ public class HectorKeyValueStore {
         }
     }
 
+    @Override
     public void readAllRowsAndThen(RowRunnable andThen) {
         int sliceCount = 100;
         RangeSlicesQuery<String, Long, String> rangeSlicesQuery = HFactory

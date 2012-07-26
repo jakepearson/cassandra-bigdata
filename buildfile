@@ -17,6 +17,8 @@ CASSANDRA_TEST = "org.yaml:snakeyaml:jar:1.6",
     "org.antlr:antlr-runtime:jar:3.2",
     "org.apache.cassandra.deps:avro:jar:1.4.0-cassandra-1"
 
+CQL = "org.apache-extras.cassandra-jdbc:cassandra-jdbc:jar:1.1.1", CASSANDRA
+
 HECTOR = "org.hectorclient:hector-core:jar:1.1-0",
     "org.apache.thrift:libthrift:jar:0.6.1",
     "commons-lang:commons-lang:jar:2.4",
@@ -26,10 +28,10 @@ HECTOR = "org.hectorclient:hector-core:jar:1.1-0",
 COMMONS = "commons-logging:commons-logging:jar:1.1.1",
           "commons-beanutils:commons-beanutils:jar:1.8.3"
 
-define 'create' do
+define 'cassandra-bigdata' do
   project.version = '0.1'
   package :jar
-  compile.with LOGGING, HECTOR, COMMONS
+  compile.with LOGGING, COMMONS, CQL, HECTOR
   run.using :main => ["com.rallydev.cassandra.CassandraBigData", "-create"]
 end
 
