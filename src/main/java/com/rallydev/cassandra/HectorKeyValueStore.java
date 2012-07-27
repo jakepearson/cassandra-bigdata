@@ -50,10 +50,7 @@ public class HectorKeyValueStore implements KeyValueStore {
 
         KEYSPACE = HFactory.createKeyspace(KEYSPACE_NAME, CLUSTER, POLICY);
 
-        if (CLUSTER.describeKeyspace(KEYSPACE_NAME).getCfDefs().size() == 0) {
-            ColumnFamilyDefinition definition = HFactory.createColumnFamilyDefinition(KEYSPACE.getKeyspaceName(), COLUMN_FAMILY);
-            CLUSTER.addColumnFamily(definition);
-        }
+        createTable(COLUMN_FAMILY);
     }
 
     @Override
@@ -66,10 +63,10 @@ public class HectorKeyValueStore implements KeyValueStore {
     }
 
     @Override
-    public String get(String key) {
+    public String get(String key, String tableName) {
         final SliceQuery<String, Long, String> query = HFactory.createSliceQuery(KEYSPACE, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER);
         query.setKey(key);
-        query.setColumnFamily(COLUMN_FAMILY);
+        query.setColumnFamily(tableName);
 
         QueryResult<ColumnSlice<Long, String>> execute = query.execute();
         List<HColumn<Long,String>> columns = execute.get().getColumns();
@@ -79,10 +76,10 @@ public class HectorKeyValueStore implements KeyValueStore {
     }
     
     @Override
-    public boolean put(final String key, final String value) {
+    public boolean put(final String key, final String value, String tableName) {
         try {
             Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
-            mutator.addInsertion(key, COLUMN_FAMILY, HFactory.createColumn((new Date()).getTime(), value, LONG_SERIALIZER, STRING_SERIALIZER));
+            mutator.addInsertion(key, tableName, HFactory.createColumn((new Date()).getTime(), value, LONG_SERIALIZER, STRING_SERIALIZER));
             mutator.execute();
             return true;
         } catch (Exception e) {
@@ -92,10 +89,10 @@ public class HectorKeyValueStore implements KeyValueStore {
     }
 
     @Override
-    public boolean delete(final String key) {
+    public boolean delete(final String key, String tableName) {
         try {
             Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
-            mutator.addDeletion(key, COLUMN_FAMILY);
+            mutator.addDeletion(key, tableName);
             mutator.execute();
             return true;
         } catch (Exception e) {
@@ -105,11 +102,11 @@ public class HectorKeyValueStore implements KeyValueStore {
     }
 
     @Override
-    public void readAllRowsAndThen(RowRunnable andThen) {
+    public void readAllRowsAndThen(String tableName, RowRunnable andThen) {
         int sliceCount = 100;
         RangeSlicesQuery<String, Long, String> rangeSlicesQuery = HFactory
                 .createRangeSlicesQuery(KEYSPACE, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER)
-                .setColumnFamily(COLUMN_FAMILY)
+                .setColumnFamily(tableName)
                 .setRange(null, null, false, 10)
                 .setRowCount(sliceCount);
 
@@ -141,5 +138,30 @@ public class HectorKeyValueStore implements KeyValueStore {
                 break;
             }
         }
+    }
+
+    @Override
+    public void createTable(String tableName) {
+        if(!containsTable(tableName)) {
+            ColumnFamilyDefinition definition = HFactory.createColumnFamilyDefinition(KEYSPACE.getKeyspaceName(), tableName);
+            CLUSTER.addColumnFamily(definition);
+        }
+    }
+
+    @Override
+    public void deleteTable(String tableName) {
+        if(containsTable(tableName)) {
+            CLUSTER.dropColumnFamily(KEYSPACE.getKeyspaceName(), tableName, true);
+        }
+    }
+
+    @Override
+    public boolean containsTable(String tableName) {
+        for(ColumnFamilyDefinition definition : CLUSTER.describeKeyspace(KEYSPACE_NAME).getCfDefs()) {
+            if(definition.getName().equals(tableName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

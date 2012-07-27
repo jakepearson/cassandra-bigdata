@@ -10,6 +10,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import static com.rallydev.cassandra.KeyValueStore.COLUMN_FAMILY;
+
 public class ActionRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(ActionRunner.class);
 
@@ -34,7 +36,7 @@ public class ActionRunner {
         executor.submit(new Runnable() {
             @Override
             public void run() {
-                if (store.put(UUID.randomUUID().toString(), UUID.randomUUID().toString())) {
+                if (store.put(UUID.randomUUID().toString(), UUID.randomUUID().toString(), COLUMN_FAMILY)) {
                     counter++;
                 }
                 if (pos % 1000 == 0) {
@@ -46,7 +48,7 @@ public class ActionRunner {
 
     public void delete() {
         counter = 0;
-        store.readAllRowsAndThen(new RowRunnable() {
+        store.readAllRowsAndThen(COLUMN_FAMILY, new RowRunnable() {
             public void run(Row<String, Long, String> row) {
                 buildDelete(row, counter);
                 counter++;
@@ -61,7 +63,7 @@ public class ActionRunner {
         executor.submit(new Runnable() {
             @Override
             public void run() {
-                store.delete(row.getKey());
+                store.delete(row.getKey(), COLUMN_FAMILY);
                 if(pos % 1000 == 0) {
                     LOGGER.info("Deleted ({})", pos);
                 }
@@ -71,7 +73,7 @@ public class ActionRunner {
 
     public void read() {
         counter = 0;
-        store.readAllRowsAndThen(new RowRunnable() {
+        store.readAllRowsAndThen(COLUMN_FAMILY, new RowRunnable() {
             public void run(Row<String, Long, String> row) {
                 //LOGGER.info(row.getKey());
                 counter++;
@@ -99,6 +101,18 @@ public class ActionRunner {
         LOGGER.info("Create took {} seconds", (createEnd - start)/1000);
         LOGGER.info("Read took {} seconds", (readEnd - createEnd)/1000);
         LOGGER.info("Delete took {} seconds", (deleteEnd - readEnd)/1000);
+    }
+
+    public void tableStress() {
+        int count = 10;
+        for (int i = 0; i < count; i++) {
+            String tableName = "TableStress";
+            store.createTable(tableName);
+            String key = "abc";
+            store.put(key, "def", tableName);
+            store.get(key, tableName);
+            store.deleteTable(tableName);
+        }
     }
 
     public void shutdown() {

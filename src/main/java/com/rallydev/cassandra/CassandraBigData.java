@@ -30,8 +30,8 @@ public class CassandraBigData {
         DELETE("-delete", "delete", "Delete all rows"),
         READ("-read", "read", "Read all rows"),
         RESET("-reset", "reset", "Delete the keyspace"),
-        EXERCISE("-exercise", "exercise", "Create, Read, Delete");
-
+        EXERCISE("-exercise", "exercise", "Create, Read, Delete"),
+        TABLE_STRESS("-tableStress", "tableStress", "Create and delete many column families");
 
         private String command;
         private String method;

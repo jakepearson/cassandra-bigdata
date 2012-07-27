@@ -5,12 +5,13 @@ public interface KeyValueStore {
     String KEYSPACE_NAME = "BigDataTestKeyspace";
 
     void deleteKeyspace();
+    String get(String key, String tableName);
+    boolean put(String key, String value, String tableName);
+    boolean delete(String key, String tableName);
 
-    String get(String key);
+    void readAllRowsAndThen(String tableName, RowRunnable andThen);
 
-    boolean put(String key, String value);
-
-    boolean delete(String key);
-
-    void readAllRowsAndThen(RowRunnable andThen);
+    boolean containsTable(String tableName);
+    void createTable(String tableName);
+    void deleteTable(String tableName);
 }

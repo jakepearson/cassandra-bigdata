@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05266912-d4ba-41ef-aca2-614a99ed54bb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/buildfile" afterPath="$PROJECT_DIR$/buildfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cassandra-bigdata.iws" afterPath="$PROJECT_DIR$/cassandra-bigdata.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CqlKeyValueStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CqlKeyValueStore.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/KeyValueStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/KeyValueStore.java" />
     </list>
     <ignored path="cassandra-bigdata.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,21 +25,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java" line="41" class="com.rallydev.cassandra.HectorKeyValueStore" package="com.rallydev.cassandra">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -79,7 +68,7 @@
       <file leaf-file-name="CassandraBigData.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="26" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0">
+            <state line="33" column="29" selection-start="1155" selection-end="1155" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -88,17 +77,13 @@
       <file leaf-file-name="ActionRunner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+            <state line="38" column="105" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#576#586#0" expanded="true" />
-                <element signature="e#1040#1397#0" expanded="true" />
-                <element signature="e#1386#1387#0" expanded="true" />
-                <element signature="e#1488#1662#0" expanded="true" />
-                <element signature="e#1651#1652#0" expanded="true" />
-                <element signature="e#1881#2129#0" expanded="true" />
-                <element signature="e#2118#2119#0" expanded="true" />
-                <element signature="e#2218#2509#0" expanded="true" />
-                <element signature="e#2498#2499#0" expanded="true" />
+                <element signature="e#643#653#0" expanded="true" />
+                <element signature="e#1585#1759#0" expanded="true" />
+                <element signature="e#1748#1749#0" expanded="true" />
+                <element signature="e#2345#2636#0" expanded="true" />
+                <element signature="e#2625#2626#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,7 +92,7 @@
       <file leaf-file-name="HectorKeyValueStore.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="0" selection-start="2771" selection-end="2771" vertical-scroll-proportion="0.0">
+            <state line="56" column="34" selection-start="2594" selection-end="2608" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -116,27 +101,25 @@
       <file leaf-file-name="KeyValueStore.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/KeyValueStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="16" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
+            <state line="11" column="46" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CqlKeyValueStore.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CqlKeyValueStore.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CqlKeyValueStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="100" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="14" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.12393493">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buildfile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="buildfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buildfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="44" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.39659178">
+            <state line="32" column="44" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -150,7 +133,6 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -167,12 +149,12 @@
         <option value="$PROJECT_DIR$/src/com/rallydev/cassandra/HectorKeyValueStore.java" />
         <option value="$PROJECT_DIR$/src/com/rallydev/cassandra/ActionRunner.java" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/KeyValueStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CqlKeyValueStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java" />
         <option value="$PROJECT_DIR$/buildfile" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/KeyValueStore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CqlKeyValueStore.java" />
       </list>
     </option>
   </component>
@@ -192,7 +174,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -207,17 +189,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -233,20 +204,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cassandra-bigdata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cassandra-bigdata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cassandra-bigdata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -278,6 +235,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,12 +261,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -431,7 +399,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1414" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -445,7 +413,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6001517" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6001517" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="101" y="122" width="2360" height="1214" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -528,78 +496,61 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache-extras/cassandra-jdbc/cassandra-jdbc/1.1.1/cassandra-jdbc-1.1.1.jar!/org/apache/cassandra/cql/jdbc/CassandraResultSet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="0" selection-start="15031" selection-end="15031" vertical-scroll-proportion="-29.48">
-          <folding />
-        </state>
+        <state line="277" column="0" selection-start="15031" selection-end="15031" vertical-scroll-proportion="-29.48" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../cassandra-jdbc/src/main/java/org/apache/cassandra/cql/jdbc/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="0" selection-start="8801" selection-end="8801" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#13331#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state line="168" column="0" selection-start="8801" selection-end="8801" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/lang/Thread.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="30" selection-start="2200" selection-end="2200" vertical-scroll-proportion="0.33333334" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="44" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="29" selection-start="1155" selection-end="1155" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/KeyValueStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="16" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CqlKeyValueStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="100" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/lang/Thread.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="30" selection-start="2200" selection-end="2200" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CassandraBigData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="26" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0">
+        <state line="11" column="46" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/HectorKeyValueStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="2771" selection-end="2771" vertical-scroll-proportion="0.0">
+        <state line="56" column="34" selection-start="2594" selection-end="2608" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/ActionRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+        <state line="38" column="105" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#576#586#0" expanded="true" />
-            <element signature="e#1040#1397#0" expanded="true" />
-            <element signature="e#1386#1387#0" expanded="true" />
-            <element signature="e#1488#1662#0" expanded="true" />
-            <element signature="e#1651#1652#0" expanded="true" />
-            <element signature="e#1881#2129#0" expanded="true" />
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2218#2509#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
+            <element signature="e#643#653#0" expanded="true" />
+            <element signature="e#1585#1759#0" expanded="true" />
+            <element signature="e#1748#1749#0" expanded="true" />
+            <element signature="e#2345#2636#0" expanded="true" />
+            <element signature="e#2625#2626#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buildfile">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rallydev/cassandra/CqlKeyValueStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="44" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.39659178">
+        <state line="14" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.12393493">
           <folding />
         </state>
       </provider>

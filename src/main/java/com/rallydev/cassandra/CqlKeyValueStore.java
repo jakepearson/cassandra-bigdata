@@ -14,29 +14,44 @@ public class CqlKeyValueStore implements KeyValueStore {
     }
 
     @Override
-    public String get(String key) {
+    public String get(String key, String tableName) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public boolean put(String key, String value) {
+    public boolean put(String key, String value, String tableName) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public boolean delete(String key) {
+    public boolean delete(String key, String tableName) {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public void readAllRowsAndThen(RowRunnable andThen) {
+    public boolean containsTable(String tableName) {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void createTable(String tableName) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void deleteTable(String tableName) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void readAllRowsAndThen(String tableName, RowRunnable andThen) {
         Connection con = null;
         try {
             Class.forName("org.apache.cassandra.cql.jdbc.CassandraDriver");
             //con = DriverManager.getConnection("jdbc:cassandra:root/root@localhost:9160/MyKeyspace");
             con = DriverManager.getConnection("jdbc:cassandra://cas2cluster1:9160/" + KEYSPACE_NAME);
 
-            String query = "SELECT * FROM " + COLUMN_FAMILY;
+            String query = "SELECT * FROM " + tableName;
 
             Statement stmt = con.createStatement();
             ResultSet result = stmt.executeQuery(query);
