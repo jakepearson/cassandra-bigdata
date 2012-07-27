@@ -67,11 +67,13 @@ public class HectorKeyValueStore implements KeyValueStore {
         final SliceQuery<String, Long, String> query = HFactory.createSliceQuery(KEYSPACE, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER);
         query.setKey(key);
         query.setColumnFamily(tableName);
+        query.setRange(new Date().getTime(), 0L, true, 1);
 
         QueryResult<ColumnSlice<Long, String>> execute = query.execute();
-        List<HColumn<Long,String>> columns = execute.get().getColumns();
+        List<HColumn<Long, String>> columns = execute.get().getColumns();
         if (columns == null || columns.size() == 0) return null;
         HColumn<Long, String> column = columns.get(0);
+
         return column.getValue();
     }
     
@@ -144,7 +146,7 @@ public class HectorKeyValueStore implements KeyValueStore {
     public void createTable(String tableName) {
         if(!containsTable(tableName)) {
             ColumnFamilyDefinition definition = HFactory.createColumnFamilyDefinition(KEYSPACE.getKeyspaceName(), tableName);
-            CLUSTER.addColumnFamily(definition);
+            CLUSTER.addColumnFamily(definition, true);
         }
     }
 
@@ -153,6 +155,16 @@ public class HectorKeyValueStore implements KeyValueStore {
         if(containsTable(tableName)) {
             CLUSTER.dropColumnFamily(KEYSPACE.getKeyspaceName(), tableName, true);
         }
+
+        //TODO if this sleep is enabled it will hang infinitely after the second time a table is deleted.  Possible bug.
+//        while(containsTable(tableName)) {
+//            try {
+//                LOGGER.info("Waiting to delete table");
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override

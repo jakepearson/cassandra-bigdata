@@ -104,13 +104,17 @@ public class ActionRunner {
     }
 
     public void tableStress() {
+        //TODO this will fail after 3-4 successful times through the loop.
         int count = 10;
         for (int i = 0; i < count; i++) {
             String tableName = "TableStress";
             store.createTable(tableName);
             String key = "abc";
-            store.put(key, "def", tableName);
-            store.get(key, tableName);
+            String value = UUID.randomUUID().toString();
+            store.put(key, value, tableName);
+            if(!value.equals(store.get(key, tableName))) {
+                throw new RuntimeException("Mismatch");
+            }
             store.deleteTable(tableName);
         }
     }
