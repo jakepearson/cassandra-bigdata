@@ -31,7 +31,8 @@ public class CassandraBigData {
         READ("-read", "read", "Read all rows"),
         RESET("-reset", "reset", "Delete the keyspace"),
         EXERCISE("-exercise", "exercise", "Create, Read, Delete"),
-        TABLE_STRESS("-tableStress", "tableStress", "Create and delete many column families");
+        TABLE_STRESS("-tableStress", "tableStress", "Create and delete many column families"),
+        DB_STRESS("-dbStress", "dbStress", "Create and delete many keyspaces");
 
         private String command;
         private String method;

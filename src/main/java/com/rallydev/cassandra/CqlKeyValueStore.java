@@ -44,6 +44,16 @@ public class CqlKeyValueStore implements KeyValueStore {
     }
 
     @Override
+    public boolean containsKeyspace(String keyspace) {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void createKeyspace(String keyspace) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     public void readAllRowsAndThen(String tableName, RowRunnable andThen) {
         Connection con = null;
         try {

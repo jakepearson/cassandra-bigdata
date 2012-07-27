@@ -36,35 +36,21 @@ public class HectorKeyValueStore implements KeyValueStore {
     private static final String HOSTS = "cas2cluster1:9160, cas2cluster2:9160, cas2cluster3:9160";
     private static final Cluster CLUSTER = getOrCreateCluster(getProperty("CLUSTER_NAME", "zuul-cluster"), new CassandraHostConfigurator(HOSTS));
     private final ConfigurableConsistencyLevel POLICY;
-    private final Keyspace KEYSPACE;
+    private Keyspace keyspace;
 
     public HectorKeyValueStore() {
         POLICY = new ConfigurableConsistencyLevel();
         POLICY.setDefaultReadConsistencyLevel(QUORUM);
         POLICY.setDefaultWriteConsistencyLevel(QUORUM);
 
-        if(CLUSTER.describeKeyspace(KEYSPACE_NAME) == null) {
-            KeyspaceDefinition keyspaceDefinition = HFactory.createKeyspaceDefinition(KEYSPACE_NAME);
-            CLUSTER.addKeyspace(keyspaceDefinition);
-        }
-
-        KEYSPACE = HFactory.createKeyspace(KEYSPACE_NAME, CLUSTER, POLICY);
+        createKeyspace(KEYSPACE_NAME);
 
         createTable(COLUMN_FAMILY);
     }
 
     @Override
-    public void deleteKeyspace() {
-        try {
-            CLUSTER.dropKeyspace(KEYSPACE.getKeyspaceName());
-        } catch (HInvalidRequestException e) {
-            System.out.println(e);
-        }
-    }
-
-    @Override
     public String get(String key, String tableName) {
-        final SliceQuery<String, Long, String> query = HFactory.createSliceQuery(KEYSPACE, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER);
+        final SliceQuery<String, Long, String> query = HFactory.createSliceQuery(keyspace, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER);
         query.setKey(key);
         query.setColumnFamily(tableName);
         query.setRange(new Date().getTime(), 0L, true, 1);
@@ -80,7 +66,7 @@ public class HectorKeyValueStore implements KeyValueStore {
     @Override
     public boolean put(final String key, final String value, String tableName) {
         try {
-            Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
+            Mutator<String> mutator = HFactory.createMutator(keyspace, STRING_SERIALIZER);
             mutator.addInsertion(key, tableName, HFactory.createColumn((new Date()).getTime(), value, LONG_SERIALIZER, STRING_SERIALIZER));
             mutator.execute();
             return true;
@@ -93,7 +79,7 @@ public class HectorKeyValueStore implements KeyValueStore {
     @Override
     public boolean delete(final String key, String tableName) {
         try {
-            Mutator<String> mutator = HFactory.createMutator(KEYSPACE, STRING_SERIALIZER);
+            Mutator<String> mutator = HFactory.createMutator(keyspace, STRING_SERIALIZER);
             mutator.addDeletion(key, tableName);
             mutator.execute();
             return true;
@@ -107,7 +93,7 @@ public class HectorKeyValueStore implements KeyValueStore {
     public void readAllRowsAndThen(String tableName, RowRunnable andThen) {
         int sliceCount = 100;
         RangeSlicesQuery<String, Long, String> rangeSlicesQuery = HFactory
-                .createRangeSlicesQuery(KEYSPACE, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER)
+                .createRangeSlicesQuery(keyspace, STRING_SERIALIZER, LONG_SERIALIZER, STRING_SERIALIZER)
                 .setColumnFamily(tableName)
                 .setRange(null, null, false, 10)
                 .setRowCount(sliceCount);
@@ -145,7 +131,7 @@ public class HectorKeyValueStore implements KeyValueStore {
     @Override
     public void createTable(String tableName) {
         if(!containsTable(tableName)) {
-            ColumnFamilyDefinition definition = HFactory.createColumnFamilyDefinition(KEYSPACE.getKeyspaceName(), tableName);
+            ColumnFamilyDefinition definition = HFactory.createColumnFamilyDefinition(keyspace.getKeyspaceName(), tableName);
             CLUSTER.addColumnFamily(definition, true);
         }
     }
@@ -153,7 +139,7 @@ public class HectorKeyValueStore implements KeyValueStore {
     @Override
     public void deleteTable(String tableName) {
         if(containsTable(tableName)) {
-            CLUSTER.dropColumnFamily(KEYSPACE.getKeyspaceName(), tableName, true);
+            CLUSTER.dropColumnFamily(keyspace.getKeyspaceName(), tableName, true);
         }
 
         //TODO if this sleep is enabled it will hang infinitely after the second time a table is deleted.  Possible bug.
@@ -175,5 +161,29 @@ public class HectorKeyValueStore implements KeyValueStore {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean containsKeyspace(String keyspaceName) {
+        return CLUSTER.describeKeyspace(keyspaceName) != null;
+    }
+
+    @Override
+    public void createKeyspace(String keyspaceName) {
+        if (!containsKeyspace(keyspaceName)) {
+            KeyspaceDefinition keyspaceDefinition = HFactory.createKeyspaceDefinition(keyspaceName);
+            CLUSTER.addKeyspace(keyspaceDefinition, true);
+        }
+
+        keyspace = HFactory.createKeyspace(keyspaceName, CLUSTER, POLICY);
+    }
+
+    @Override
+    public void deleteKeyspace() {
+        try {
+            CLUSTER.dropKeyspace(keyspace.getKeyspaceName(), true);
+        } catch (HInvalidRequestException e) {
+            LOGGER.error("Failed to delete keyspace", e);
+        }
     }
 }

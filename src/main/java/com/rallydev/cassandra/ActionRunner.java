@@ -119,6 +119,24 @@ public class ActionRunner {
         }
     }
 
+    public void dbStress() {
+        int count = 10;
+        for (int i = 0; i < count; i++) {
+            String keyspace = "KeySpaceStress";
+            String tableName = "TableStress";
+            store.createKeyspace(keyspace);
+            store.createTable(tableName);
+            String key = "abc";
+            String value = UUID.randomUUID().toString();
+            store.put(key, value, tableName);
+            if(!value.equals(store.get(key, tableName))) {
+                throw new RuntimeException("Mismatch");
+            }
+            store.deleteTable(tableName);
+            store.deleteKeyspace();
+        }
+    }
+
     public void shutdown() {
         executor.shutdown();
     }
