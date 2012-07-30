@@ -23,7 +23,7 @@ public class ActionRunner {
 
     public void create() {
         counter = 0;
-        int count = 1000;
+        int count = 1000000;
         for(int i = 1; i<=count; i++) {
             buildCreate(i, count);
         }
